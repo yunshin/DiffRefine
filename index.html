@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification for Cross Domain Object Detection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification for Cross Domain Object Detection</h1>
+    <p class="authors">Sangyun Shin, Yuhang He, Xinyu Hou, Samuel Hodgson, Andrew Markham, Niki Trigoni C<br><em>ICCV 2025 (Highlight)</em></p>
+
+    <div class="teaser">
+      <img src="media/teaser.png" alt="Teaser image" />
+    </div>
+
+    <p><a href="https://arxiv.org/abs/xxxx.xxxxx">[Paper]</a>
+       <a href="https://github.com/yourname/yourproject">[Code]</a>
+       <a href="media/teaser.png">[Poster]</a>
+    </p>
+
+    <h2>Abstract</h2>
+    <p>
+      The robustness of 3D object detection in large-scale outdoor point clouds degrades significantly when deployed in an unseen environment due to domain shifts. To minimize the domain gap, existing works on domain adaptive detection focuses on several factors, including point density, object shape and sizes, to reduce the false negative detections. However, the adaptation results indicate that there are still remaining challenges. We argue that this is due to the challenge in recognizing comparably less distinctive region on object surface due to sparsity, occlusion, \textit{etc.} In this work, we aim to reinforce those features by generating points on object surface to make them straightforwardly recognizable. We draw our motivation from a common observation that detection proposals already contain the accurate bounding boxes, but with relatively low objectness score predictions, which lead to false negatives. Given these box proposals, we densify sparse object points with a diffusion approach. As a result, our model \textit{DiffRefine} can act as a simple additional module before second-stage refinement, where most existing detection models for two-stage detection can use. Experimental results on domain adaptive detection show competitive performance, especially on vanishing points due to distance on various detection architectures. 
+    </p>
+
+    <h2>Method Overview</h2>
+    <img src="media/teaser.png" alt="Method diagram" class="full-width"/>
+
+    <h2>Results</h2>
+    <img src="media/teaser.png" alt="Qualitative Results" class="full-width"/>
+
+    <h2>BibTeX</h2>
+    <pre>
+@inproceedings{yourkey2025,
+  title={Your Project Title},
+  author={Author A and Author B and Author C},
+  booktitle={Conference Name},
+  year={2025}
+}
+    </pre>
+
+    <footer>
+      <p>Contact: your.email@domain.com</p>
+    </footer>
+  </div>
+</body>
+</html>
