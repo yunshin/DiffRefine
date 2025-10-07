@@ -16,7 +16,7 @@
       --line: #e5e7eb;
       --brand: #111827;
       --chip: #f3f4f6;
-      --accent: #b23a48; /* subtle maroon accent */
+      --accent: #b23a48;
     }
     * { box-sizing: border-box; }
     body {
@@ -51,11 +51,11 @@
     .hero-video {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
-      margin: 20px 0;
+      margin: 30px 0;
     }
     .hero-video iframe {
       position: absolute;
@@ -64,10 +64,34 @@
       height: 100%;
       border: none;
     }
+    /* Overlay text on video */
+    .hero-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      background: rgba(0,0,0,0.4);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
 
-    .hero-media { margin: 22px 0 10px; text-align: center; }
-    .hero-media img, .hero-media video, .hero-media iframe {
-      max-width: 100%; border-radius: 8px; border: 1px solid var(--line);
+    /* Teaser section styling */
+    .teaser-block {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 40px auto;
+      max-width: 700px;
+    }
+    .teaser-block img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--line);
     }
     .caption { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
 
@@ -76,9 +100,7 @@
       font-size: 1.35rem; margin: 0 0 12px; padding-bottom: 6px;
       border-bottom: 1px solid var(--line);
     }
-    .grid2 {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .grid1 { display: grid; grid-template-columns: 1fr; gap: 16px; }
     .card {
       background: #fafafa; border: 1px solid var(--line); border-radius: 8px; padding: 16px;
@@ -105,7 +127,7 @@
     <header>
       <h1>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification<br>for Cross-Domain Object Detection</h1>
       <p class="authors">
-        <a href="#">Sangyun Shin Test</a><sup>1</sup>,
+        <a href="#">Sangyun Shin</a><sup>1</sup>,
         <a href="#">Yuhang He</a><sup>2</sup>,
         <a href="#">Xinyu Hou</a><sup>1</sup>,
         <a href="#">Samuel Hodgson</a><sup>1</sup>,
@@ -125,7 +147,7 @@
         <span class="chip">Point Clouds</span>
       </div>
 
-      <!-- Full-width autoplaying, looping hero video -->
+      <!-- Full-width autoplaying hero video with overlay -->
       <div class="hero-video">
         <iframe 
           src="https://www.youtube.com/embed/hZqjXAwajw8?autoplay=1&mute=1&loop=1&playlist=hZqjXAwajw8&controls=0&rel=0&modestbranding=1" 
@@ -134,18 +156,19 @@
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen>
         </iframe>
+        <div class="hero-overlay">DiffRefine — ICCV 2025 Spotlight</div>
       </div>
-      
-      <!-- Teaser image smaller -->
-      <div class="hero-media" style="max-width:600px; margin:20px auto;">
+
+      <!-- Distinct teaser block -->
+      <div class="teaser-block">
         <img src="assets/fig01_teaser.png" alt="Figure 1 teaser: proposal-specific generation boosts detection performance">
-        <div class="caption">Figure 1 (paper): DiffRefine performs proposal-specific generation to boost detection performance.</div>
+        <div class="caption">Figure 1: DiffRefine performs proposal-specific generation to boost detection performance.</div>
       </div>
     </header>
 
-    <!-- Rest of your sections (abstract, overview, etc.) stay unchanged -->
+    <!-- Rest of your sections (abstract, overview, etc.) -->
     <!-- ... -->
-    
+
     <footer>
       <div>© <span id="y"></span> DiffRefine Authors</div>
       <div class="small">For questions: <a href="mailto:sangyun.shin@cs.ox.ac.uk">sangyun.shin@cs.ox.ac.uk</a></div>
