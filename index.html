@@ -16,7 +16,7 @@
       --line: #e5e7eb;
       --brand: #111827;
       --chip: #f3f4f6;
-      --accent: #b23a48;
+      --accent: #b23a48; /* subtle maroon accent */
     }
     * { box-sizing: border-box; }
     body {
@@ -35,6 +35,7 @@
     }
     header { text-align: center; margin-bottom: 24px; }
     header h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .subtitle { color: var(--muted); margin: 0 0 10px; }
     .authors { margin: 8px 0; font-size: 0.98rem; }
     .authors a { color: var(--text); }
     .affil { color: var(--muted); font-size: 0.95rem; }
@@ -46,50 +47,9 @@
       padding: 6px 12px; font-size: 0.9rem;
     }
 
-    /* Full-width hero video */
-    .hero-video {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      margin: 30px 0;
-    }
-    .hero-video iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: clamp(1.2rem, 2.5vw, 2rem);
-      background: rgba(0,0,0,0.4);
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
-
-    /* Teaser block distinct from video */
-    .teaser-block {
-      background: #fafafa;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-      margin: 40px auto;
-      max-width: 700px;
-    }
-    .teaser-block img {
-      width: 100%;
-      border-radius: 6px;
-      border: 1px solid var(--line);
+    .hero-media { margin: 22px 0 10px; text-align: center; }
+    .hero-media img, .hero-media video, .hero-media iframe {
+      max-width: 100%; border-radius: 8px; border: 1px solid var(--line);
     }
     .caption { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
 
@@ -98,7 +58,9 @@
       font-size: 1.35rem; margin: 0 0 12px; padding-bottom: 6px;
       border-bottom: 1px solid var(--line);
     }
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
     .grid1 { display: grid; grid-template-columns: 1fr; gap: 16px; }
     .card {
       background: #fafafa; border: 1px solid var(--line); border-radius: 8px; padding: 16px;
@@ -125,7 +87,7 @@
     <header>
       <h1>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification<br>for Cross-Domain Object Detection</h1>
       <p class="authors">
-        <a href="#">Sangyun Shin</a><sup>1</sup>,
+        <a href="#">Sangyun Shin Test</a><sup>1</sup>,
         <a href="#">Yuhang He</a><sup>2</sup>,
         <a href="#">Xinyu Hou</a><sup>1</sup>,
         <a href="#">Samuel Hodgson</a><sup>1</sup>,
@@ -137,6 +99,7 @@
       <div class="links">
         <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2025/08/DiffRefine_ICCV.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
         <a href="https://github.com/" target="_blank"><i class="fa-brands fa-github"></i> Code (coming)</a>
+        
       </div>
       <div class="chips">
         <span class="chip">ICCV 2025 <span class="accent">(Spotlight)</span></span>
@@ -144,8 +107,6 @@
         <span class="chip">Diffusion</span>
         <span class="chip">Point Clouds</span>
       </div>
-
-      <!-- Full-width autoplay hero video -->
       <div class="hero-video">
         <iframe 
           src="https://www.youtube.com/embed/hZqjXAwajw8?autoplay=1&mute=1&loop=1&playlist=hZqjXAwajw8&controls=0&rel=0&modestbranding=1" 
@@ -156,33 +117,43 @@
         </iframe>
         
       </div>
+      
+      <!-- Teaser smaller -->
+      
+      
 
-      <!-- Distinct teaser block -->
-      <div class="teaser-block">
-        <img src="assets/fig01_teaser.png" alt="Figure 1 teaser">
-        <div class="caption">Figure 1: DiffRefine performs proposal-specific generation to boost detection performance.</div>
-      </div>
+      
+      
     </header>
 
     <section id="abstract">
       <h2>Abstract</h2>
-      <p>We propose <strong>DiffRefine</strong>, a diffusion-based module that densifies sparse object points inside box proposals to improve second-stage refinement in 3D object detection under domain shift...</p>
+      <div class="hero-media" style="max-width:600px; margin:20px auto;">
+        <img src="assets/fig01_teaser.png" alt="Figure 1 teaser: proposal-specific generation boosts detection performance">
+        <div class="caption">Figure 1 (paper): DiffRefine performs proposal-specific generation to boost detection performance.</div>
+      </div>
+      <p>
+        We propose <strong>DiffRefine</strong>, a diffusion-based module that densifies sparse object points inside box proposals to improve second-stage refinement in 3D object detection under domain shift. Motivated by the observation that proposals often have good localization but low objectness, DiffRefine iteratively generates points on object surfaces to reinforce missing features that lead to false negatives. Our approach uses differentiable 3D generation on voxel grids and conditions on spatial context to prevent hallucinations. Experiments on KITTI, nuScenes, and Waymo demonstrate competitive improvements, especially for distant objects where sparsity is severe.
+      </p>
     </section>
-
+    
     <section id="overview">
       <h2>Method Overview</h2>
       <div class="grid2">
         <figure class="card">
-          <img src="assets/fig02_pipeline.png" alt="Figure 2 pipeline">
-          <figcaption class="figcap">Figure 2: Overall pipeline — proposals → voxelization → diffusion densification → refinement.</figcaption>
+          <!-- Replace src with your image for Figure 2 -->
+          <img src="assets/fig02_pipeline.png" alt="Figure 2: Overall pipeline">
+          <figcaption class="figcap">
+            Figure 2 (paper): Overall pipeline—box proposals → point extraction &amp; size-agnostic voxelization → diffusion-based densification (with differentiable warping) → second-stage refinement. <!-- Insert Figure 2 image -->
+          </figcaption>
         </figure>
         <div class="card">
-          <h3>Key Ideas</h3>
+          <h3 style="margin-top:0">Key Ideas</h3>
           <ul>
-            <li><strong>Proposal-specific generation</strong></li>
-            <li><strong>Diffusion for densification</strong></li>
-            <li><strong>Size-agnostic voxelization</strong></li>
-            <li><strong>Spatial-context conditioning</strong></li>
+            <li><strong>Proposal-specific generation</strong>: operate only inside candidate boxes (object-centric) rather than the whole cloud.</li>
+            <li><strong>Diffusion for point densification</strong>: treat sparse surface points as noisy samples; denoise to recover dense structure.</li>
+            <li><strong>Size-agnostic voxelization</strong>: normalized box view to reduce object size variance across domains.</li>
+            <li><strong>Spatial-context conditioning</strong>: fuse neighborhood features to curb false positives during generation.</li>
           </ul>
         </div>
       </div>
@@ -192,57 +163,92 @@
       <h2>Differentiable Object-Point Generation</h2>
       <div class="grid2">
         <figure class="card">
-          <img src="assets/fig03_concept.png" alt="Figure 3 concept">
-          <figcaption class="figcap">Figure 3: Conceptual diagram of differentiable generation.</figcaption>
+          <!-- Replace src with your image for Figure 3 -->
+          <img src="assets/fig03_concept.png" alt="Figure 3: Concept of differentiable generation on voxel grids">
+          <figcaption class="figcap">
+            Figure 3 (paper): Conceptual diagram—(a) sparse input points, (b) generation target, (c) offset prediction, (d) generation via differentiable warping across diffusion steps. <!-- Insert Figure 3 image -->
+          </figcaption>
         </figure>
         <figure class="card">
-          <img src="assets/fig04_steps.png" alt="Figure 4 denoising steps">
-          <figcaption class="figcap">Figure 4: Generated object points across denoising steps.</figcaption>
+          <!-- Replace src with your image for Figure 4 -->
+          <img src="assets/fig04_steps.png" alt="Figure 4: Generated object points across denoising steps">
+          <figcaption class="figcap">
+            Figure 4 (paper): Generated object points across denoising steps (e.g., car and pedestrian classes). <!-- Insert Figure 4 image -->
+          </figcaption>
         </figure>
       </div>
+      <p class="small">
+        Implementation sketch: given proposal voxels, the diffusion model predicts offsets to the nearest occupied voxels and warps points progressively—providing a differentiable path for learning to densify object surfaces.
+      </p>
     </section>
 
     <section id="spatial-context">
       <h2>Spatial Context &amp; Refinement</h2>
       <div class="grid2">
         <figure class="card">
-          <img src="assets/fig06_context.png" alt="Figure 6 spatial context">
-          <figcaption class="figcap">Figure 6: Spatial context feature reduces hallucinations.</figcaption>
+          <!-- Replace src with your image for Figure 6 -->
+          <img src="assets/fig06_context.png" alt="Figure 6: Impact of spatial context feature">
+          <figcaption class="figcap">
+            Figure 6 (paper): Spatial context feature reduces hallucinations by correlating generated points with neighborhood structure; improves refinement vs. no-context. <!-- Insert Figure 6 image -->
+          </figcaption>
         </figure>
         <div class="card">
-          <p>We fuse a <strong>spatial context feature</strong> from a BEV encoder...</p>
+          <p>
+            We fuse a <strong>spatial context feature</strong> from a BEV encoder with generated object points using a cross-attention style correlation. This steers densification toward plausible geometry and helps the second-stage refinement reject false positives.
+          </p>
+          <ul class="small" style="margin-top:6px">
+            <li>Ablations show the largest performance drop when removing context.</li>
+            <li>Joint training of generation and refinement further boosts accuracy.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section id="results">
       <h2>Results</h2>
+
       <figure class="card">
-        <img src="assets/fig05_qualitative.png" alt="Figure 5 qualitative">
-        <figcaption class="figcap">Figure 5: Qualitative comparisons across domains.</figcaption>
+        <!-- Replace src with your image for Figure 5 -->
+        <img src="assets/fig05_qualitative.png" alt="Figure 5: Qualitative comparisons across baselines and ours">
+        <figcaption class="figcap">
+          Figure 5 (paper): Qualitative comparisons (e.g., Waymo → nuScenes, nuScenes → KITTI). DiffRefine reduces false negatives for distant, sparse objects. <!-- Insert Figure 5 image -->
+        </figcaption>
       </figure>
+
       <div class="grid2">
         <figure class="card">
-          <img src="assets/fig07_runtime_steps.png" alt="Figure 7 runtime">
-          <figcaption class="figcap">Figure 7: Runtime vs. number of denoising steps.</figcaption>
+          <!-- Replace src with your image for Figure 7 -->
+          <img src="assets/fig07_runtime_steps.png" alt="Figure 7: Runtime and denoising steps analysis">
+          <figcaption class="figcap">
+            Figure 7 (paper): Runtime vs. number of denoising steps; performance improves up to ~6 steps. <!-- Insert Figure 7 image -->
+          </figcaption>
         </figure>
         <figure class="card">
-          <img src="assets/fig08_distance.png" alt="Figure 8 distance">
-          <figcaption class="figcap">Figure 8: Distance vs. surface points and AP.</figcaption>
+          <!-- Replace src with your image for Figure 8 -->
+          <img src="assets/fig08_distance.png" alt="Figure 8: Distance vs. number of surface points and AP">
+          <figcaption class="figcap">
+            Figure 8 (paper): Object distance vs. surface points &amp; AP—DiffRefine helps particularly for distant objects suffering from sparsity. <!-- Insert Figure 8 image -->
+          </figcaption>
         </figure>
       </div>
+
       <div class="grid1">
         <figure class="card">
-          <img src="assets/tab01_main_results.png" alt="Table 1 results">
-          <figcaption class="figcap">Table 1: Quantitative results across adaptation scenarios.</figcaption>
+          <!-- Optional: render tables as images if you exported them -->
+          <img src="assets/tab01_main_results.png" alt="Table 1: Quantitative results across adaptation scenarios">
+          <figcaption class="figcap">
+            Table 1 (paper): Quantitative results on domain adaptation (e.g., Waymo→KITTI, nuScenes→KITTI, Waymo→nuScenes) with SECOND-IoU and PointPillars.
+          </figcaption>
         </figure>
       </div>
     </section>
 
+    
+
     <section id="bibtex">
       <h2>BibTeX</h2>
       <div class="card">
-<pre>
+<pre style="white-space:pre-wrap; margin:0; font-size:0.92rem;">
 @inproceedings{shin2025diffrefine,
   title     = {DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification for Cross-Domain Object Detection},
   author    = {Shin, Sangyun and He, Yuhang and Hou, Xinyu and Hodgson, Samuel and Markham, Andrew and Trigoni, Niki},
