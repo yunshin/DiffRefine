@@ -35,7 +35,6 @@
     }
     header { text-align: center; margin-bottom: 24px; }
     header h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
-    .subtitle { color: var(--muted); margin: 0 0 10px; }
     .authors { margin: 8px 0; font-size: 0.98rem; }
     .authors a { color: var(--text); }
     .affil { color: var(--muted); font-size: 0.95rem; }
@@ -64,7 +63,6 @@
       height: 100%;
       border: none;
     }
-    /* Overlay text on video */
     .hero-overlay {
       position: absolute;
       top: 50%;
@@ -79,7 +77,7 @@
       border-radius: 8px;
     }
 
-    /* Teaser section styling */
+    /* Teaser block distinct from video */
     .teaser-block {
       background: #fafafa;
       border: 1px solid var(--line);
@@ -147,7 +145,7 @@
         <span class="chip">Point Clouds</span>
       </div>
 
-      <!-- Full-width autoplaying hero video with overlay -->
+      <!-- Full-width autoplay hero video -->
       <div class="hero-video">
         <iframe 
           src="https://www.youtube.com/embed/hZqjXAwajw8?autoplay=1&mute=1&loop=1&playlist=hZqjXAwajw8&controls=0&rel=0&modestbranding=1" 
@@ -161,13 +159,99 @@
 
       <!-- Distinct teaser block -->
       <div class="teaser-block">
-        <img src="assets/fig01_teaser.png" alt="Figure 1 teaser: proposal-specific generation boosts detection performance">
+        <img src="assets/fig01_teaser.png" alt="Figure 1 teaser">
         <div class="caption">Figure 1: DiffRefine performs proposal-specific generation to boost detection performance.</div>
       </div>
     </header>
 
-    <!-- Rest of your sections (abstract, overview, etc.) -->
-    <!-- ... -->
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>We propose <strong>DiffRefine</strong>, a diffusion-based module that densifies sparse object points inside box proposals to improve second-stage refinement in 3D object detection under domain shift...</p>
+    </section>
+
+    <section id="overview">
+      <h2>Method Overview</h2>
+      <div class="grid2">
+        <figure class="card">
+          <img src="assets/fig02_pipeline.png" alt="Figure 2 pipeline">
+          <figcaption class="figcap">Figure 2: Overall pipeline — proposals → voxelization → diffusion densification → refinement.</figcaption>
+        </figure>
+        <div class="card">
+          <h3>Key Ideas</h3>
+          <ul>
+            <li><strong>Proposal-specific generation</strong></li>
+            <li><strong>Diffusion for densification</strong></li>
+            <li><strong>Size-agnostic voxelization</strong></li>
+            <li><strong>Spatial-context conditioning</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="generation">
+      <h2>Differentiable Object-Point Generation</h2>
+      <div class="grid2">
+        <figure class="card">
+          <img src="assets/fig03_concept.png" alt="Figure 3 concept">
+          <figcaption class="figcap">Figure 3: Conceptual diagram of differentiable generation.</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/fig04_steps.png" alt="Figure 4 denoising steps">
+          <figcaption class="figcap">Figure 4: Generated object points across denoising steps.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="spatial-context">
+      <h2>Spatial Context &amp; Refinement</h2>
+      <div class="grid2">
+        <figure class="card">
+          <img src="assets/fig06_context.png" alt="Figure 6 spatial context">
+          <figcaption class="figcap">Figure 6: Spatial context feature reduces hallucinations.</figcaption>
+        </figure>
+        <div class="card">
+          <p>We fuse a <strong>spatial context feature</strong> from a BEV encoder...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results</h2>
+      <figure class="card">
+        <img src="assets/fig05_qualitative.png" alt="Figure 5 qualitative">
+        <figcaption class="figcap">Figure 5: Qualitative comparisons across domains.</figcaption>
+      </figure>
+      <div class="grid2">
+        <figure class="card">
+          <img src="assets/fig07_runtime_steps.png" alt="Figure 7 runtime">
+          <figcaption class="figcap">Figure 7: Runtime vs. number of denoising steps.</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/fig08_distance.png" alt="Figure 8 distance">
+          <figcaption class="figcap">Figure 8: Distance vs. surface points and AP.</figcaption>
+        </figure>
+      </div>
+      <div class="grid1">
+        <figure class="card">
+          <img src="assets/tab01_main_results.png" alt="Table 1 results">
+          <figcaption class="figcap">Table 1: Quantitative results across adaptation scenarios.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <h2>BibTeX</h2>
+      <div class="card">
+<pre>
+@inproceedings{shin2025diffrefine,
+  title     = {DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification for Cross-Domain Object Detection},
+  author    = {Shin, Sangyun and He, Yuhang and Hou, Xinyu and Hodgson, Samuel and Markham, Andrew and Trigoni, Niki},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year      = {2025}
+}
+</pre>
+      </div>
+    </section>
 
     <footer>
       <div>© <span id="y"></span> DiffRefine Authors</div>
