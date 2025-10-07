@@ -85,7 +85,7 @@
 <body>
   <div class="wrap">
     <header>
-      <h1>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification<br>for Cross-Domain Object Detection</h1>
+      <h1>DiffRefine: Diffusion-based Proposal Specific Point Cloud Densification for Cross-Domain Object Detection</h1>
       <p class="authors">
         <a href="#">Sangyun Shin Test</a><sup>1</sup>,
         <a href="#">Yuhang He</a><sup>2</sup>,
@@ -128,13 +128,13 @@
 
     <section id="abstract">
       <h2>Abstract</h2>
+      <p>
+        We propose <strong>DiffRefine</strong>, a diffusion-based module that densifies sparse object points inside box proposals to improve second-stage refinement in 3D object detection under domain shift. Motivated by the observation that proposals often have good localization but low objectness, DiffRefine iteratively generates points on object surfaces to reinforce missing features that lead to false negatives. Our approach uses differentiable 3D generation on voxel grids and conditions on spatial context to prevent hallucinations. Experiments on KITTI, nuScenes, and Waymo demonstrate competitive improvements, especially for distant objects where sparsity is severe.
+      </p>
       <div class="hero-media" style="max-width:600px; margin:20px auto;">
         <img src="assets/fig01_teaser.png" alt="Figure 1 teaser: proposal-specific generation boosts detection performance">
         <div class="caption">Figure 1 (paper): DiffRefine performs proposal-specific generation to boost detection performance.</div>
       </div>
-      <p>
-        We propose <strong>DiffRefine</strong>, a diffusion-based module that densifies sparse object points inside box proposals to improve second-stage refinement in 3D object detection under domain shift. Motivated by the observation that proposals often have good localization but low objectness, DiffRefine iteratively generates points on object surfaces to reinforce missing features that lead to false negatives. Our approach uses differentiable 3D generation on voxel grids and conditions on spatial context to prevent hallucinations. Experiments on KITTI, nuScenes, and Waymo demonstrate competitive improvements, especially for distant objects where sparsity is severe.
-      </p>
     </section>
     
     <section id="overview">
